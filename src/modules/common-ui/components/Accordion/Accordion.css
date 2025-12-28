@@ -1,0 +1,34 @@
+.zama_multiHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: bold;
+  min-height: 36px;
+}
+
+.accordion__label {
+  display: flex;
+  font-weight: normal;
+  padding: 0;
+  font-size: 11px;
+  width: calc(100% - 20px);
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.accordion__label span {
+  text-overflow: ellipsis;
+  padding: 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  overflow: hidden;
+  max-width: calc(100% - 20px);
+  display: inline-block;
+  white-space: nowrap;
+  flex-grow: 1;
+}
