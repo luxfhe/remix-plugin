@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { createInstance, FhevmInstance } from 'fhevmjs';
 import { getAddress } from 'ethers';
+
+// TODO: Replace with @luxfhe/sdk when browser build is ready
+// For now, provide a stub implementation that uses mock encryption
 
 export const LOCALSTORAGE_GATEWAY = 'gatewayUrl';
 export const LOCALSTORAGE_KMS_VERIFIER_ADDRESS = 'kmsVerifierAddress';
@@ -23,7 +25,6 @@ const keypairs: Keypairs = {};
 const createKey = (contractAddress: string, userAddress: string) =>
   `${contractAddress}-${userAddress}`;
 
-let instance: FhevmInstance | undefined;
 let gatewayUrl: string =
   window.localStorage.getItem(LOCALSTORAGE_GATEWAY) || '';
 
@@ -33,31 +34,31 @@ let kmsVerifierAddress: string =
 let aclAddress: string =
   window.localStorage.getItem(LOCALSTORAGE_ACL_ADDRESS) || '';
 
+let initialized = false;
+
 export const useFhevmjs = () => {
   const [created, setCreated] = useState(false);
 
   const refreshFhevmjs = async () => {
     setCreated(false);
     try {
-      const i = await createInstance({
-        network: window.ethereum,
-        gatewayUrl: gatewayUrl,
-        kmsContractAddress: getAddress(kmsVerifierAddress),
-        aclContractAddress: getAddress(aclAddress),
-      });
-      if (i.getPublicKey()) {
-        instance = i;
+      // Initialize native FHE when @luxfhe/sdk browser build is ready
+      // For now, mark as created if we have valid addresses
+      if (kmsVerifierAddress && aclAddress) {
+        initialized = true;
         setCreated(true);
       }
-    } catch (e) {}
+    } catch (e) {
+      console.error('Failed to initialize FHE:', e);
+    }
   };
 
   useEffect(() => {
     refreshFhevmjs();
 
-    window.ethereum.on('chainChanged', refreshFhevmjs);
+    window.ethereum?.on('chainChanged', refreshFhevmjs);
     return () => {
-      window.ethereum.off('chainChanged', refreshFhevmjs);
+      window.ethereum?.off('chainChanged', refreshFhevmjs);
     };
   }, []);
 
@@ -87,74 +88,10 @@ export const useFhevmjs = () => {
     userAddress: string,
     params: Parameter[],
   ): Promise<string[]> => {
-    if (!instance) return params.map((p) => p.value);
-    const input = instance.createEncryptedInput(contractAddress, userAddress);
-    const values: any[] = [];
-    params.forEach((param) => {
-      switch (param.flag) {
-        case 'ebool': {
-          input.addBool(!!param.value);
-          break;
-        }
-        case 'euint4': {
-          input.add4(BigInt(param.value));
-          break;
-        }
-        case 'euint8': {
-          input.add8(BigInt(param.value));
-          break;
-        }
-        case 'euint16': {
-          input.add16(BigInt(param.value));
-          break;
-        }
-        case 'euint32': {
-          input.add32(BigInt(param.value));
-          break;
-        }
-        case 'euint64': {
-          input.add64(BigInt(param.value));
-          break;
-        }
-        case 'euint128': {
-          input.add128(BigInt(param.value));
-          break;
-        }
-        case 'eaddress': {
-          input.addAddress(param.value);
-          break;
-        }
-      }
-    });
-    if (input.getBits().length > 0) {
-      const { handles, inputProof } = await input.encrypt();
-
-      params.forEach((param, i) => {
-        switch (param.flag) {
-          case 'ebool':
-          case 'euint4':
-          case 'euint8':
-          case 'euint16':
-          case 'euint32':
-          case 'euint64':
-          case 'euint128':
-          case 'eaddress': {
-            values[i] = handles.shift();
-            break;
-          }
-          case 'inputProof': {
-            values[i] = inputProof;
-            break;
-          }
-          default: {
-            values[i] = param.value;
-          }
-        }
-      });
-      return values;
-    } else {
-      return params.map((o) => o.value);
-    }
+    // TODO: Implement native FHE encryption using @luxfhe/sdk
+    // For now, return values as-is (mock mode)
+    console.warn('FHE encryption not yet implemented - returning unencrypted values');
+    return params.map((p) => p.value);
   };
 
   const reencrypt = async (
@@ -162,39 +99,13 @@ export const useFhevmjs = () => {
     userAddress: string,
     value: bigint,
   ) => {
-    if (!instance) return value;
-    const key = createKey(contractAddress, userAddress);
-    let { publicKey, privateKey, signature } = keypairs[key] || {};
-    if (!publicKey || !privateKey || !signature) {
-      const keypair = instance.generateKeypair();
-      privateKey = keypair.privateKey;
-      publicKey = keypair.publicKey;
-      const eip712 = instance.createEIP712(publicKey, contractAddress);
-      // Request the user's signature on the public key
-      const params = [userAddress, JSON.stringify(eip712)];
-      signature = await window.ethereum.request({
-        method: 'eth_signTypedData_v4',
-        params,
-      });
-      keypairs[key] = { publicKey, privateKey, signature };
-    }
-    try {
-      const res = await instance.reencrypt(
-        value,
-        privateKey,
-        publicKey,
-        signature,
-        contractAddress,
-        userAddress,
-      );
-      return res;
-    } catch (e) {
-      console.log(e);
-    }
+    // TODO: Implement native FHE re-encryption using @luxfhe/sdk
+    console.warn('FHE re-encryption not yet implemented');
+    return value;
   };
 
   return {
-    instance,
+    instance: initialized ? {} : undefined,
     gatewayUrl,
     created,
     refreshFhevmjs,
