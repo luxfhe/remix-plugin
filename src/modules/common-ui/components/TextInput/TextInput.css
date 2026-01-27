@@ -1,7 +1,7 @@
-.zama_input {
+.luxfhe_input {
   font-size: 10px !important;
 }
 
-.zama_input[disabled] {
+.luxfhe_input[disabled] {
   opacity: 0.5;
 }

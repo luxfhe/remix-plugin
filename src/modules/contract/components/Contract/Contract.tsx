@@ -279,7 +279,7 @@ export const Contract = ({ }) => {
     <div>
       <div className="links_issue mt-2">
         <a
-          href="https://github.com/zama-ai/fhevm-remix-plugin/issues"
+          href="https://github.com/luxfi/fhe/issues"
           rel="nofollow"
           target="_blank"
         >

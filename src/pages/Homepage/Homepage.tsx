@@ -16,7 +16,7 @@ export const Homepage = () => {
           <li>Keep "Iframe" and "Side panel" and validate</li>
         </ol>
         <p className="center" dir="auto">
-          <a href="https://github.com/zama-ai/fhevm/blob/main/fhevm-whitepaper-v2.pdf"> 📃 Read the whitepaper</a> |{' '}
+          <a href="https://docs.lux.network/fhe/fhevm/whitepaper"> 📃 Read the whitepaper</a> |{' '}
           <a href="https://docs.lux.network/fhe/fhevm" rel="nofollow">
             📒 Documentation
           </a>{' '}
@@ -24,7 +24,7 @@ export const Homepage = () => {
           <a href="https://lux.network/community" rel="nofollow">
             💛 Community support
           </a>{' '}
-          | <a href="https://github.com/zama-ai/awesome-zama"> 📚 FHE resources by Zama</a>
+          | <a href="https://github.com/luxfi/fhe"> 📚 FHE resources by Lux</a>
         </p>
       </div>
     </div>

@@ -1,9 +1,9 @@
-.zama__result {
+.luxfhe__result {
   display: flex;
   justify-content: flex-end;
 }
 
-.zama__result .zama_value {
+.luxfhe__result .luxfhe_value {
   font-weight: normal;
   font-size: 12px;
   display: inline-block;
@@ -13,7 +13,7 @@
   white-space: nowrap;
 }
 
-.zama__result .zama_reencrypt {
+.luxfhe__result .luxfhe_reencrypt {
   font-size: 10px;
   border-radius: 3px;
   color: var(--text);
@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 
-.zama_decrypted {
+.luxfhe_decrypted {
   font-weight: normal;
   font-size: 12px;
   display: inline-block;
