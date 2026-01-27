@@ -20,9 +20,9 @@ export const Result: React.FC<ResultProps> = ({ value, contractAddress }) => {
   }, [value]);
 
   return (
-    <div className="zama__result">
-      {!decryption && <span className="zama_value mx-1">{value || '0'}</span>}
-      {decryption && <span className="zama_decrypted mx-1">{decryption} (decrypted)</span>}
+    <div className="luxfhe__result">
+      {!decryption && <span className="luxfhe_value mx-1">{value || '0'}</span>}
+      {decryption && <span className="luxfhe_decrypted mx-1">{decryption} (decrypted)</span>}
       <IconCopy value={value} />
       {gatewayUrl && (
         <span
@@ -30,7 +30,7 @@ export const Result: React.FC<ResultProps> = ({ value, contractAddress }) => {
             const dec = await reencrypt(getAddress(contractAddress), getAddress(account!), BigInt(value));
             setDecryption(dec?.toString());
           }}
-          className="zama_reencrypt"
+          className="luxfhe_reencrypt"
         >
           Reencrypt
         </span>

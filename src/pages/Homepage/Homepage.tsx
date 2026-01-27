@@ -12,16 +12,16 @@ export const Homepage = () => {
         <ol>
           <li>Go to the "Plugin Manager" page</li>
           <li>Click on "Connect to a Local Plugin"</li>
-          <li>Fill the name with "Zama" and the "Url" with "https://remix.zama.ai/"</li>
+          <li>Fill the name with "Lux FHE" and the "Url" with "https://remix.lux.network/"</li>
           <li>Keep "Iframe" and "Side panel" and validate</li>
         </ol>
         <p className="center" dir="auto">
           <a href="https://github.com/zama-ai/fhevm/blob/main/fhevm-whitepaper-v2.pdf"> 📃 Read the whitepaper</a> |{' '}
-          <a href="https://docs.zama.ai/fhevm" rel="nofollow">
+          <a href="https://docs.lux.network/fhe/fhevm" rel="nofollow">
             📒 Documentation
           </a>{' '}
           |{' '}
-          <a href="https://zama.ai/community" rel="nofollow">
+          <a href="https://lux.network/community" rel="nofollow">
             💛 Community support
           </a>{' '}
           | <a href="https://github.com/zama-ai/awesome-zama"> 📚 FHE resources by Zama</a>

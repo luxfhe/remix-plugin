@@ -38,11 +38,11 @@ export const App = () => {
         </Network>
       </Connect>
       <div className="links mt-2">
-        <a href="https://docs.zama.ai/fhevm" rel="nofollow" target="_blank">
+        <a href="https://docs.lux.network/fhe/fhevm" rel="nofollow" target="_blank">
           📒 Documentation
         </a>{' '}
         |{' '}
-        <a href="https://zama.ai/community" rel="nofollow" target="_blank">
+        <a href="https://lux.network/community" rel="nofollow" target="_blank">
           💛 Community support
         </a>
       </div>

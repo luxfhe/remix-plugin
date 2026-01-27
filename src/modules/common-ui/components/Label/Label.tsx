@@ -9,7 +9,7 @@ export type LabelProps = {
 export const Label = ({ label, className = '' }: LabelProps) => {
   return (
     <label id="selectExEnv" className={classNames('udapp_settingsLabel', className)}>
-      <span className="zama__label">{label}</span>
+      <span className="luxfhe__label">{label}</span>
     </label>
   );
 };

@@ -59,7 +59,7 @@ export const ContractFunction: React.FC<ContractFunctionProps> = ({
         />
       )}
       {(!abiDescription.inputs || abiDescription.inputs.length === 0) && (
-        <div className="d-flex px-2 my-2 zama_multiHeader">
+        <div className="d-flex px-2 my-2 luxfhe_multiHeader">
           <Button onClick={onClick} variant={abiDescription.stateMutability === 'view' ? 'primary' : 'warning'}>
             {abiDescription.name}
           </Button>

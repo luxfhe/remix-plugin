@@ -91,12 +91,12 @@ export const Inputs: React.FC<InputsProps> = ({
                 v.name.toLowerCase().includes(n.toLowerCase()),
               );
             return (
-              <div className="zama_multiArg" key={`${v.name}-${i}`}>
+              <div className="luxfhe_multiArg" key={`${v.name}-${i}`}>
                 <Label label={`${v.name}`} />
                 <div
                   className={classNames({
-                    zama_inputContainer: true,
-                    zama_inputContainer__small: canEncrypt,
+                    luxfhe_inputContainer: true,
+                    luxfhe_inputContainer__small: canEncrypt,
                   })}
                 >
                   <TextInput
@@ -138,7 +138,7 @@ export const Inputs: React.FC<InputsProps> = ({
               </div>
             );
           })}
-        <div className="d-flex zama_multiArg my-2">
+        <div className="d-flex luxfhe_multiArg my-2">
           {loading && <Loader />}
           <Button onClick={onClickProp} variant={variant}>
             Submit

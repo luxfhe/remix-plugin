@@ -212,7 +212,7 @@ export const Contract = ({ }) => {
     contractSection = (
       <>
         <div className="form-check-label">{name}</div>
-        <div className="zama_contractActionsContainerMultiInner text-dark">
+        <div className="luxfhe_contractActionsContainerMultiInner text-dark">
           <Inputs
             values={constructorValues}
             setValues={setConstructorValues}
@@ -223,7 +223,7 @@ export const Contract = ({ }) => {
             contractAddress={'0x'}
           />
         </div>
-        <div className="d-flex flex-column zama_contractAddress">
+        <div className="d-flex flex-column luxfhe_contractAddress">
           <div className="d-flex flex-row">
             <Button
               onClick={() => {
@@ -246,7 +246,7 @@ export const Contract = ({ }) => {
               At address
             </Button>
             <TextInput
-              className="zama_contractAddressInput"
+              className="luxfhe_contractAddressInput"
               value={inputContractAddress}
               onChange={(e) => {
                 setInputContractAddress(e.target.value);
@@ -291,7 +291,7 @@ export const Contract = ({ }) => {
         <br />
         {account}
         <br />
-        <a href="https://remix.zama.ai/disconnect" target="_blank">
+        <a href="https://remix.lux.network/disconnect" target="_blank">
           Disconnect
         </a>
       </div>

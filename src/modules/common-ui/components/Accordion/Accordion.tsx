@@ -25,7 +25,7 @@ export const Accordion: React.FC<HeaderProps> = ({
 
   const arrow = (
     <i
-      className={classNames('fas zama_methCaret', 'mx-1', {
+      className={classNames('fas luxfhe_methCaret', 'mx-1', {
         'fa-angle-up': visible,
         'fa-angle-down': !visible,
       })}
@@ -35,7 +35,7 @@ export const Accordion: React.FC<HeaderProps> = ({
   return (
     <div className={classNames('accordion', 'px-1', 'my-2', { 'border-dark': visible, 'bg-light': visible })}>
       <div
-        className="zama_multiHeader"
+        className="luxfhe_multiHeader"
         onClick={() => {
           setVisible(!visible);
         }}
